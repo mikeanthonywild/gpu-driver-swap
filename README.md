@@ -4,7 +4,7 @@ gpu-driver-swap is a systemd service to automatically swap AMD / Nvidia drivers 
 
 ## Requirements
 
-* systemd-based distribution (see [Installing on SysV distributions](#Installingonsysvdistributions)
+* systemd-based distribution (see [Installing on SysV distributions](#Installing-on-SysV-distributions))
 * Proprietary AMD and Nvidia drivers
 
 ## Installation
