@@ -1,0 +1,9 @@
+[Unit]
+Description=Service to automatically swap AMD/Nvidia drivers on boot
+Before=display-manager.service
+
+[Service]
+ExecStart=/bin/sh /usr/lib/systemd/scripts/gpuswap.sh
+
+[Install]
+WantedBy=graphical.target
