@@ -18,7 +18,7 @@ gpu-driver-swap is a systemd service to automatically swap AMD / Nvidia drivers 
 
 * `libglx_path` - GLX shared library to use (usually `libglx.so.xxx.xx` for Nvidia and `fglrx-libglx.so` for AMD)
 * `libgl_path` - OpenGL shared library to use (usually `libGL.so.xxx.xx` for Nvidia and `fglrx.libGL.so.x.x` for AMD)
-* `xorg_path` - Xorg config file to use - try and put as much shared stuff in */etc/xorg/xorg.conf.d` as possible, and only put `Device` sections in *xorg.conf*
+* `xorg_path` - Xorg config file to use - try and put as much shared stuff in */etc/xorg/xorg.conf.d* as possible, and only put `Device` sections in *xorg.conf*
 
 ## Installing on SysV distributions
 
