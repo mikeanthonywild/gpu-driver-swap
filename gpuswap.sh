@@ -31,6 +31,8 @@ function swap_drivers {
     printf "Linking libglx.so..."
     if [ -s $libglx_path ]; then
         ln -snf $libglx_path /usr/lib64/xorg/modules/extensions/libglx.so
+        # Needed for dynamic switching
+        # ldconfig /usr/lib64/xorg/modules/extensions
         echo OK
     else
         echo ERROR
@@ -42,6 +44,8 @@ function swap_drivers {
     printf "Linking libGL.so.1..."
     if [ -s $libgl_path ]; then
         ln -snf $libgl_path /usr/lib64/libGL.so.1
+        # Needed for dynamic switching
+        # ldconfig /usr/lib64
         echo OK
     else
         echo ERROR
