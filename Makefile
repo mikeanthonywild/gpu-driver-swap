@@ -5,11 +5,11 @@ all:
 	echo "Nothing to build"
 
 install:
-	install -D gpuswap.sh $(SYSTEMD_SCRIPT_DIR)/gpuswap.sh
-	install -D gpu-driver-swap.service $(SYSTEMD_SERVICE_DIR)/gpu-driver-swap.service
+	install -D -m 00755 gpuswap.sh $(DESTDIR)$(SYSTEMD_SCRIPT_DIR)/gpuswap.sh
+	install -D -m 00644 gpu-driver-swap.service $(DESTDIR)$(SYSTEMD_SERVICE_DIR)/gpu-driver-swap.service
 
 uninstall:
-	-rm $(SYSTEMD_SCRIPT_DIR)/gpuswap.sh
-	-rm $(SYSTEMD_SERVICE_DIR)/gpu-driver-swap.service
+	-rm $(DESTDIR)$(SYSTEMD_SCRIPT_DIR)/gpuswap.sh
+	-rm $(DESTDIR)$(SYSTEMD_SERVICE_DIR)/gpu-driver-swap.service
 
 .PHONY: install uninstall
