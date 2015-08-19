@@ -9,8 +9,8 @@
 function use_nvidia {
     # UPDATE THESE PATHS
     driver_pkg=nvidia
-    libglx_path=/usr/lib64/xorg/modules/extensions/libglx.so.346.47
-    libgl_path=/usr/lib64/libGL.so.346.47
+    libglx_path=$(ls -r /usr/lib64/xorg/modules/extensions/ | grep libglx.so.)
+    libgl_path=$(ls -r /usr/lib64/ | grep libGL.so.)
     xorg_path=/SW-SCRT-0030/bladeConfig/xorg.conf.K2200M
 }
 
