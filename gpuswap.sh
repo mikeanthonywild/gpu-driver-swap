@@ -9,9 +9,9 @@
 function use_nvidia {
     # UPDATE THESE PATHS
     driver_pkg=nvidia
-    libglx_path=$(ls -r /usr/lib64/xorg/modules/extensions/ | grep libglx.so.)
-    libgl_path=$(ls -r /usr/lib64/ | grep libGL.so.)
-    xorg_path=/SW-SCRT-0030/bladeConfig/xorg.conf.K2200M
+    libglx_path=$(find /usr/lib64/xorg/modules/extensions/ -name 'libglx.so.*' | sort -r | head -n 1)
+    libgl_path=$(find /usr/lib64/ -name 'libGL.so.*' | sort -r | head -n 1)
+    xorg_path=/etc/Xorg/xorg.conf.nvidia
 }
 
 
@@ -20,7 +20,7 @@ function use_fglrx {
     driver_pkg=fglrx
     libglx_path=/usr/lib64/xorg/modules/extensions/fglrx/fglrx-libglx.so
     libgl_path=/usr/lib64/fglrx/fglrx-libGL.so.1.2  
-    xorg_path=/SW-SCRT-0030/bladeConfig/xorg/conf.S4000X
+    xorg_path=/etc/Xorg/xorg.conf.amd
 }
 
 
