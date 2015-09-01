@@ -24,7 +24,7 @@ use_fglrx() {
 }
 
 
-swap_drivers {
+swap_drivers() {
     echo "Using $driver_pkg driver"
     
     # libglx
