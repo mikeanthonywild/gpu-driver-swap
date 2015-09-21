@@ -1,17 +1,17 @@
 #!/bin/bash
 
-# Script to swap AMD/Nvidia drivers on boot. Both drivers must have
+# Script to swap AMD/Nvidia/Intel drivers on boot. Both drivers must have
 # been installed first, as the script relies on the various libraries
 # being in their default locations. Script works by overriding
 # symlinks on libglx.so, libgl.so and xorg.conf. Once these point to
-# the AMD/Nvidia libraries, hardware-accelerated OpenGL is available.
+# the AMD/Nvidia/Intel libraries, hardware-accelerated OpenGL is available.
 
 use_nvidia() {
     # UPDATE THESE PATHS
     driver_pkg=nvidia
     libglx_path=$(find /usr/lib64/xorg/modules/extensions/ -name 'libglx.so.*' | sort -r | head -n 1)
     libgl_path=$(find /usr/lib64/ -name 'libGL.so.*' | sort -r | head -n 1)
-    xorg_path=/SW-SCRT-0030/bladeConfig/xorg.conf.K2200M
+    xorg_path=/etc/X11/xorg.conf.nvidia
 }
 
 
@@ -20,7 +20,16 @@ use_fglrx() {
     driver_pkg=fglrx
     libglx_path=/usr/lib64/xorg/modules/extensions/fglrx/fglrx-libglx.so
     libgl_path=/usr/lib64/fglrx/fglrx-libGL.so.1.2  
-    xorg_path=/SW-SCRT-0030/bladeConfig/xorg.conf.S4000X
+    xorg_path=/etc/X11/xorg.conf.fglrx
+}
+
+
+use_intel() {
+    # UPDATE THESE PATHS
+    driver_pkg=intel
+    libglx_path=/usr/lib64/xorg/modules/extensions/libglx.so.intel
+    libgl_path=/usr/lib64/libGL.so.intel
+    xorg_path=/etc/X11/xorg.conf.intel
 }
 
 
@@ -74,6 +83,8 @@ if [[ $kmsg == *"NVIDIA"* ]]; then
     use_nvidia
 elif [[ $kmsg == *"AMD"* ]]; then
     use_fglrx
+elif [[ $kmsg == *"Intel"* ]]; then
+    use_intel
 else
     echo "ERROR: Unsupported VGA controller"
     exit 1
